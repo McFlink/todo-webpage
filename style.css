@@ -77,6 +77,11 @@ h1 {
     background-color: white;
 }
 
+#item-list li p{
+    text-align: start;
+    flex: 1;
+}
+
 .checkbox {
     width: 30px;
     height: 30px;
@@ -92,4 +97,11 @@ h1 {
 
 .checkbox:checked {
     background-color: green; /* För tillfället */
+}
+
+.remove-button{
+    justify-self: end;
+    padding: 0;
+    border: none;
+    background: none;
 }

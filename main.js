@@ -3,6 +3,7 @@ let selectAllItemsElement = document.querySelector("#choose-all-items");
 let inputElement = document.querySelector("#todo-input");
 let itemList = document.querySelector("#item-list");
 
+
 formElement.onsubmit = function(event) {
     event.preventDefault();
 
@@ -13,14 +14,25 @@ formElement.onsubmit = function(event) {
     if (inputValue !== '') {
         let newItem = document.createElement("li");
         let checkbox = document.createElement("input");
+        let itemText = document.createElement("p");
+        let removeButton = document.createElement("button");
+
         checkbox.type = "checkbox";
         checkbox.classList.add("checkbox");
-        newItem.append(checkbox);
+        itemText.textContent = inputValue;
 
-        newItem.append(document.createTextNode(inputValue));
+        removeButton.className = 'remove-button';
+        removeButton.textContent = '❌';
+        
+        newItem.append(checkbox);
+        newItem.append(itemText);
+        newItem.append(removeButton);
         itemList.append(newItem);
+
+        removeButton.addEventListener("click", () => {
+            newItem.remove();
+        })
 
         inputElement.value = '';
     }
-
 };
