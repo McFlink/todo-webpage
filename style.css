@@ -5,6 +5,7 @@
 }
 
 body {
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     max-width: 550px;
     margin: auto;
     text-align: center;
@@ -15,7 +16,6 @@ h1 {
     color: #b83f45;
     font-size: 80px;
     font-weight: lighter;
-    font-family: Helvetica;
     margin-top: 25px;
     margin-bottom: 30px;
 }
@@ -55,7 +55,22 @@ h1 {
 
 #todo-input::placeholder {
     font-size: 22px;
-    color: #a3a3a3;
+    color: rgba(0, 0, 0, 0.4);
     font-style: italic;
     letter-spacing: 1px;
+}
+
+#todo-input:focus {
+	box-shadow: 0 0 2px 2px #CF7D7D;
+	outline: 0;
+}
+
+#item-list{
+    list-style: none;
+}
+
+#item-list li{
+    font-size: 24px;
+    padding: 15px;
+    border-bottom: 1px solid #ededed;
 }

@@ -11,7 +11,7 @@ formElement.onsubmit = function(event) {
 
     let inputValue = inputElement.value.trim();
     if (inputValue !== '') {
-        let newItem = document.createElement("div"); // div or li??
+        let newItem = document.createElement("li"); // div or li??
         newItem.textContent = inputValue;
         itemList.append(newItem);
 
