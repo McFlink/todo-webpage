@@ -11,8 +11,13 @@ formElement.onsubmit = function(event) {
 
     let inputValue = inputElement.value.trim();
     if (inputValue !== '') {
-        let newItem = document.createElement("li"); // div or li??
-        newItem.textContent = inputValue;
+        let newItem = document.createElement("li");
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.classList.add("checkbox");
+        newItem.append(checkbox);
+
+        newItem.append(document.createTextNode(inputValue));
         itemList.append(newItem);
 
         inputElement.value = '';
