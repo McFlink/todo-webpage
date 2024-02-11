@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -12,18 +11,18 @@
 <body>
     <header>
         <h1>todos</h1>
-        <div class="input-wrapper">
-            <div id="choose-all-items">🔽</div>
-            <input type="text" id="todo-input" placeholder="What needs to be done?">
-        </div>
+        <form id="add-item-form">
+            <div class="input-wrapper">
+                <label for="todo-input" id="choose-all-items"></label>
+                <input type="text" name="todo-input" id="todo-input" placeholder="What needs to be done?">
+            </div>
+        </form>
     </header>
-
     <main>
-
+        <div id="item-list"></div> <!-- div or ul?? -->
     </main>
 
     <footer>
-
     </footer>
 
 </body>
