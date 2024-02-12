@@ -3,6 +3,7 @@ let selectAllItemsElement = document.querySelector("#choose-all-items");
 let inputElement = document.querySelector("#todo-input");
 let itemList = document.querySelector("#item-list");
 let todoFooterElement = document.querySelector(".todo-footer"); // antar vi ska ha en till footer, därav namnet
+let itemsLeft = document.querySelector("#item-count");
 
 let itemsArray = [];
 
@@ -45,11 +46,6 @@ formElement.onsubmit = function (event) {
     }
 };
 
-// Footer
-let itemsLeft = document.createElement("span");
-itemsLeft.classList.add("item-count");
-todoFooterElement.append(itemsLeft);
-
 function itemCount() {
     if (itemsArray.length === 1) {
         itemsLeft.textContent = `${itemsArray.length} item left`;
@@ -59,7 +55,7 @@ function itemCount() {
     }
 
     if (itemsArray.length > 0) {
-        todoFooterElement.style.display = "block";
+        todoFooterElement.style.display = "flex";
     }
     else {
         todoFooterElement.style.display = "none";

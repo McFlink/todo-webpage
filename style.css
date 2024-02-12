@@ -46,7 +46,7 @@ h1 {
     width: 100%;
     font-size: 20px;
     padding: 10px;
-    box-shadow: 0 3px 14px #bbbbbb;
+    box-shadow: 0 -2px 5px #bbbbbb;
     border: none;
     outline: none;
     padding-left: 60px;
@@ -67,6 +67,7 @@ h1 {
 
 #item-list{
     list-style: none;
+    box-shadow: 0 3px 14px #bbbbbb;
 }
 
 #item-list li{
@@ -111,4 +112,43 @@ h1 {
     height: 40px;
     border-bottom: 1px solid #ededed;
     background-color: white;
+    box-shadow: 0 3px 5px #bbbbbb;
+}
+.todo-footer span{
+    text-align: start;
+    align-self: center;
+}
+
+#button-list{
+    display: inline-flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.footer-buttons{
+    padding: 4px;
+    border: none;
+    background: none;
+    font-size: 1.1em;
+}
+
+#button-list button{
+    margin: 0 6px;
+    outline-color: #CF7D7D;
+}
+#button-list button:hover{
+    box-shadow: 0 0 2px 2px #CF7D7D;
+	outline: 0;
+}
+#clear-button{
+    margin-right: 10px;
+}
+#clear-button:hover{
+    text-decoration: underline;
+}
+
+#item-count{
+    margin-left: 10px;
 }
