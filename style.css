@@ -141,10 +141,12 @@ li:hover .remove-button {
 
 #button-list button{
     margin: 0 6px;
-    outline-color: #CF7D7D;
 }
 #button-list button:hover{
     box-shadow: 0 0 2px 2px #CF7D7D;
+}
+#button-list button:focus{
+    outline: 1px solid #CF7D7D;
 }
 #clear-button{
     margin-right: 10px;

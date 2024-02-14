@@ -7,7 +7,6 @@ let itemsLeft = document.querySelector("#item-count");
 
 let itemsArray = [];
 
-
 formElement.onsubmit = function (event) {
     event.preventDefault();
 
@@ -61,8 +60,6 @@ function itemCount() {
     else {
         todoFooterElement.style.display = "none";
     }
-
-    labelBehaviour();
 };
 
 // Check or uncheck all
@@ -79,8 +76,6 @@ selectAllItemsElement.addEventListener("click", () => {
     });
 });
 
-
-
 // Remove connection label => input when items in array
 function labelBehaviour() {
     if (itemsArray.length > 0) {
@@ -92,8 +87,51 @@ function labelBehaviour() {
     }
 };
 
-
 // Remove label "border" when focus on input field
 inputElement.addEventListener("focus", () => {
     selectAllItemsElement.style.boxShadow = "none";
 });
+
+document.querySelector("#all-button").addEventListener("click", DisplayAll);
+document.querySelector("#active-button").addEventListener("click", DisplayActive);
+document.querySelector("#completed-button").addEventListener("click", DisplayCompleted);
+document.querySelector("#clear-button").addEventListener("click", ClearCompleted);
+
+function DisplayAll(){
+    itemsArray.forEach(item => {
+        item.style.display = "flex";
+    })
+}
+
+function DisplayActive(){
+    itemsArray.forEach(item => {
+        let checkBox = item.querySelector(".checkbox");
+        if(checkBox.checked){
+            item.style.display = "none";
+        }
+        else{
+            item.style.display = "flex";
+        }
+    })
+}
+
+function DisplayCompleted(){
+    itemsArray.forEach(item => {
+        let checkBox = item.querySelector(".checkbox");
+        if(checkBox.checked){
+            item.style.display = "flex";
+        }
+        else{
+            item.style.display = "none";
+        }
+    })
+}
+
+function ClearCompleted(){
+    itemsArray.forEach(item => {
+        let checkBox = item.querySelector(".checkbox");
+        if(checkBox.checked){
+            item.remove();
+        }
+    })
+}
