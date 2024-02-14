@@ -32,12 +32,23 @@ formElement.onsubmit = function (event) {
         newItem.append(removeButton);
         itemList.append(newItem);
 
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                itemText.style.textDecoration = "line-through";
+                itemText.style.color = "#949494";
+            }
+            else {
+                itemText.style.textDecoration = "none";
+                itemText.style.color = "";
+            }
+        });
+
         removeButton.addEventListener("click", () => {
             itemsArray.splice(itemsArray.indexOf(newItem), 1);
             newItem.remove();
             itemCount();
         });
-        
+
         itemsArray.push(newItem);
         itemCount();
         labelBehaviour();
@@ -59,6 +70,7 @@ function itemCount() {
     }
     else {
         todoFooterElement.style.display = "none";
+        selectAllItemsElement.style.display = "none";
     }
 };
 
@@ -73,6 +85,16 @@ selectAllItemsElement.addEventListener("click", () => {
     itemsArray.forEach(item => {
         let checkbox = item.querySelector(".checkbox");
         checkbox.checked = selectAllChecked;
+
+        let itemText = item.querySelector("p");
+        if (selectAllChecked) {
+            itemText.style.textDecoration = "line-through";
+            itemText.style.color = "#949494";
+        }
+        else {
+            itemText.style.textDecoration = "none";
+            itemText.style.color = "";
+        }
     });
 });
 
@@ -97,41 +119,44 @@ document.querySelector("#active-button").addEventListener("click", DisplayActive
 document.querySelector("#completed-button").addEventListener("click", DisplayCompleted);
 document.querySelector("#clear-button").addEventListener("click", ClearCompleted);
 
-function DisplayAll(){
+function DisplayAll() {
     itemsArray.forEach(item => {
         item.style.display = "flex";
     })
 }
 
-function DisplayActive(){
+function DisplayActive() {
     itemsArray.forEach(item => {
         let checkBox = item.querySelector(".checkbox");
-        if(checkBox.checked){
+        if (checkBox.checked) {
             item.style.display = "none";
         }
-        else{
+        else {
             item.style.display = "flex";
         }
     })
 }
 
-function DisplayCompleted(){
+function DisplayCompleted() {
     itemsArray.forEach(item => {
         let checkBox = item.querySelector(".checkbox");
-        if(checkBox.checked){
+        if (checkBox.checked) {
             item.style.display = "flex";
         }
-        else{
+        else {
             item.style.display = "none";
         }
     })
 }
 
-function ClearCompleted(){
-    itemsArray.forEach(item => {
+function ClearCompleted() {
+    itemsArray = itemsArray.filter(item => {
         let checkBox = item.querySelector(".checkbox");
-        if(checkBox.checked){
+        if (checkBox.checked) {
             item.remove();
+            return false; // Ta bort item från array
         }
-    })
+        return true; // behåll item i array
+    });
+    itemCount();
 }
