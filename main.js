@@ -61,3 +61,15 @@ function itemCount() {
         todoFooterElement.style.display = "none";
     }
 }
+
+// Check or uncheck all
+let selectAllChecked = false;
+
+selectAllItemsElement.addEventListener("click", () => {
+    selectAllChecked = !selectAllChecked;
+
+    itemsArray.forEach(item => {
+        let checkbox = item.querySelector(".checkbox");
+        checkbox.checked = selectAllChecked;
+    });
+});
