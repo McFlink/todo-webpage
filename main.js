@@ -41,6 +41,7 @@ formElement.onsubmit = function (event) {
         
         itemsArray.push(newItem);
         itemCount();
+        labelBehaviour();
 
         inputElement.value = '';
     }
@@ -60,7 +61,9 @@ function itemCount() {
     else {
         todoFooterElement.style.display = "none";
     }
-}
+
+    labelBehaviour();
+};
 
 // Check or uncheck all
 let selectAllChecked = false;
@@ -68,8 +71,29 @@ let selectAllChecked = false;
 selectAllItemsElement.addEventListener("click", () => {
     selectAllChecked = !selectAllChecked;
 
+    selectAllItemsElement.style.boxShadow = "0 0 2px 2px #CF7D7D";
+
     itemsArray.forEach(item => {
         let checkbox = item.querySelector(".checkbox");
         checkbox.checked = selectAllChecked;
     });
+});
+
+
+
+// Remove connection label => input when items in array
+function labelBehaviour() {
+    if (itemsArray.length > 0) {
+        selectAllItemsElement.removeAttribute("for");
+    }
+    else {
+        selectAllItemsElement.setAttribute("for", "todo-input");
+        selectAllItemsElement.style.display = "none";
+    }
+};
+
+
+// Remove label "border" when focus on input field
+inputElement.addEventListener("focus", () => {
+    selectAllItemsElement.style.boxShadow = "none";
 });
