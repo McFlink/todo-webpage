@@ -11,11 +11,13 @@ let itemsArray = [];
 formElement.onsubmit = function (event) {
     event.preventDefault();
 
-    selectAllItemsElement.style.display = "flex";
-    selectAllItemsElement.textContent = "🔽";
+    
 
     let inputValue = inputElement.value.trim();
     if (inputValue !== '') {
+        selectAllItemsElement.style.display = "flex";
+        selectAllItemsElement.textContent = "🔽";
+
         let newItem = document.createElement("li");
         let checkbox = document.createElement("input");
         let itemText = document.createElement("p");
@@ -34,14 +36,6 @@ formElement.onsubmit = function (event) {
         itemList.append(newItem);
 
         checkbox.addEventListener("change", () => {
-            if (checkbox.checked) {
-                itemText.style.textDecoration = "line-through";
-                itemText.style.color = "#949494";
-            }
-            else {
-                itemText.style.textDecoration = "none";
-                itemText.style.color = "";
-            }
             itemCount();
         });
 
@@ -72,28 +66,12 @@ function itemCount() {
             count++;
         }
     })
-    
-    if(anyChecked){
-        clearButton.style.visibility = "visible";
-    }
-    else{
-        clearButton.style.visibility = "hidden";
-    }
 
-    if (count === 1) {
-        itemsLeft.textContent = `${count} item left`;
-    }
-    else {
-        itemsLeft.textContent = `${count} items left`;
-    }
+    clearButton.style.visibility = anyChecked ? "visible" : "hidden";
 
-    if (itemsArray.length > 0) {
-        todoFooterElement.style.display = "flex";
-    }
-    else {
-        todoFooterElement.style.display = "none";
-        selectAllItemsElement.style.display = "none";
-    }
+    itemsLeft.textContent = count === 1 ? `${count} item left` : `${count} items left`;
+
+    footerDisplay();
 };
 
 // Check or uncheck all
@@ -183,4 +161,14 @@ function ClearCompleted() {
         return true; // behåll item i array
     });
     itemCount();
+}
+
+function footerDisplay() {
+    if (itemsArray.length > 0) {
+        todoFooterElement.style.display = "flex";
+    }
+    else {
+        todoFooterElement.style.display = "none";
+        selectAllItemsElement.style.display = "none";
+    }
 }

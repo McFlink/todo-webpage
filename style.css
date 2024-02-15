@@ -112,6 +112,11 @@ li:hover .remove-button {
     display: inline-block;
 }
 
+.checkbox:checked + p {
+    text-decoration: line-through;
+    color: #949494;
+}
+
 .todo-footer {
     display: none;
     height: 40px;
