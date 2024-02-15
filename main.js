@@ -4,6 +4,7 @@ let inputElement = document.querySelector("#todo-input");
 let itemList = document.querySelector("#item-list");
 let todoFooterElement = document.querySelector(".todo-footer"); // antar vi ska ha en till footer, därav namnet
 let itemsLeft = document.querySelector("#item-count");
+let clearButton = document.querySelector("#clear-button");
 
 let itemsArray = [];
 
@@ -60,13 +61,24 @@ formElement.onsubmit = function (event) {
 
 function itemCount() {
     let count = 0;
+    let anyChecked = false;
 
     itemsArray.forEach(item => {
         let checkBox = item.querySelector(".checkbox");
-        if (!checkBox.checked) {
+        if (checkBox.checked) {
+            anyChecked = true;
+        }
+        else{
             count++;
         }
     })
+    
+    if(anyChecked){
+        clearButton.style.visibility = "visible";
+    }
+    else{
+        clearButton.style.visibility = "hidden";
+    }
 
     if (count === 1) {
         itemsLeft.textContent = `${count} item left`;
@@ -127,7 +139,7 @@ inputElement.addEventListener("focus", () => {
 document.querySelector("#all-button").addEventListener("click", DisplayAll);
 document.querySelector("#active-button").addEventListener("click", DisplayActive);
 document.querySelector("#completed-button").addEventListener("click", DisplayCompleted);
-document.querySelector("#clear-button").addEventListener("click", ClearCompleted);
+clearButton.addEventListener("click", ClearCompleted);
 
 function DisplayAll() {
     itemsArray.forEach(item => {
