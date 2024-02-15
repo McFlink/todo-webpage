@@ -41,6 +41,7 @@ formElement.onsubmit = function (event) {
                 itemText.style.textDecoration = "none";
                 itemText.style.color = "";
             }
+            itemCount();
         });
 
         removeButton.addEventListener("click", () => {
@@ -58,11 +59,20 @@ formElement.onsubmit = function (event) {
 };
 
 function itemCount() {
-    if (itemsArray.length === 1) {
-        itemsLeft.textContent = `${itemsArray.length} item left`;
+    let count = 0;
+
+    itemsArray.forEach(item => {
+        let checkBox = item.querySelector(".checkbox");
+        if (!checkBox.checked) {
+            count++;
+        }
+    })
+
+    if (count === 1) {
+        itemsLeft.textContent = `${count} item left`;
     }
     else {
-        itemsLeft.textContent = `${itemsArray.length} items left`;
+        itemsLeft.textContent = `${count} items left`;
     }
 
     if (itemsArray.length > 0) {
