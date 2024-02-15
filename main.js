@@ -118,6 +118,8 @@ selectAllItemsElement.addEventListener("click", () => {
             itemText.style.color = "";
         }
     });
+
+    itemCount();
 });
 
 // Remove connection label => input when items in array
