@@ -85,16 +85,6 @@ selectAllItemsElement.addEventListener("click", () => {
     itemsArray.forEach(item => {
         let checkbox = item.querySelector(".checkbox");
         checkbox.checked = selectAllChecked;
-
-        let itemText = item.querySelector("p");
-        if (selectAllChecked) {
-            itemText.style.textDecoration = "line-through";
-            itemText.style.color = "#949494";
-        }
-        else {
-            itemText.style.textDecoration = "none";
-            itemText.style.color = "";
-        }
     });
 
     itemCount();
