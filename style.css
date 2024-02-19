@@ -188,11 +188,18 @@ li:hover .remove-button {
     }
 
     #item-count {
-        padding: 4px;
+        margin-top: 11px;
         flex: auto;
     }
 
     #button-list {
         order: 2;
+        margin-right: 58px;
+    }
+
+    #clear-button {
+        padding: 0;
+        padding-right: 3px;
+        margin-top: 11px;
     }
 }
