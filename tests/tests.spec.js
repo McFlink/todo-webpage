@@ -18,7 +18,7 @@ test('add one item, confirm "1 item left", check the item and confirm "0 items l
 
   await todoItem.fill("Träna");
   await todoItem.press("Enter");
-  
+
   //Check if itemCount === "1 item left"
   await expect(itemCount).toHaveText("1 item left");
 
@@ -36,7 +36,7 @@ test('add 3 items, check one item and confirm "2 items left"', async ({ page }) 
 
   await todoItem.fill("Träna");
   await todoItem.press("Enter");
-  
+
   await todoItem.fill("Äta");
   await todoItem.press("Enter");
 

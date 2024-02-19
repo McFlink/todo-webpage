@@ -11,8 +11,6 @@ let itemsArray = [];
 formElement.onsubmit = function (event) {
     event.preventDefault();
 
-    
-
     let inputValue = inputElement.value.trim();
     if (inputValue !== '') {
         selectAllItemsElement.style.display = "flex";
@@ -62,7 +60,7 @@ function itemCount() {
         if (checkBox.checked) {
             anyChecked = true;
         }
-        else{
+        else {
             count++;
         }
     })
