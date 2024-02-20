@@ -99,7 +99,6 @@ h1 {
 
 .checkbox:checked {
     background-color: green;
-    /* För tillfället */
 }
 
 .remove-button {
@@ -141,7 +140,7 @@ li:hover .remove-button {
 }
 
 .footer-buttons {
-    padding: 4px;
+    
     border: none;
     background: none;
     font-size: 1.1em;
@@ -149,6 +148,7 @@ li:hover .remove-button {
 
 #button-list button {
     margin: 0 6px;
+    padding: 4px;
 }
 
 #button-list button:hover {
@@ -163,7 +163,7 @@ li:hover .remove-button {
     display: flex;
     justify-content: end;
     align-self: center;
-    margin-right: 6px;
+    margin-right: 10px;
     flex: 1;
 }
 
@@ -187,14 +187,14 @@ li:hover .remove-button {
     color: #4d4d4d;
 }
 
-@media screen and (max-width: 448px) {
+@media screen and (max-width: 444px) {
     .todo-footer {
         height: 55px;
         flex-wrap: wrap;
     }
 
     #item-count {
-        margin-top: 6px;
+        margin-top: 10px;
         margin-right: 70px;
     }
 
@@ -203,16 +203,12 @@ li:hover .remove-button {
     }
 
     #clear-button {
-        margin-top: 7px;
+        margin-top: 11px;
         margin-left: 70px;
     }
 }
 
  @media screen and (max-width: 400px) {
-    .todo-footer {
-        flex-wrap: wrap;
-    }
-   
     #item-count {
         flex: auto;
         margin-right: 2px;
