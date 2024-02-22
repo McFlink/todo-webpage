@@ -144,7 +144,6 @@ function DisplayActive() {
             item.style.display = "flex";
         }
     })
-    DisplayActive();
 }
 
 function DisplayCompleted() {
