@@ -5,6 +5,8 @@ let itemList = document.querySelector("#item-list");
 let todoFooterElement = document.querySelector(".todo-footer"); // antar vi ska ha en till footer, därav namnet
 let itemsLeft = document.querySelector("#item-count");
 let clearButton = document.querySelector("#clear-button");
+let activeFilter = false;
+let completedFilter = false;
 
 let itemsArray = [];
 
@@ -35,6 +37,17 @@ formElement.onsubmit = function (event) {
 
         checkbox.addEventListener("change", () => {
             itemCount();
+
+            //Added to update the filter when changing a checkbox.
+            if(activeFilter === true){
+                DisplayActive();
+            }
+            else if(completedFilter === true){
+                DisplayCompleted();
+            }
+            else{
+                DisplayAll();
+            }
         });
 
         removeButton.addEventListener("click", () => {
@@ -110,12 +123,18 @@ document.querySelector("#completed-button").addEventListener("click", DisplayCom
 clearButton.addEventListener("click", ClearCompleted);
 
 function DisplayAll() {
+    activeFilter = false;
+    completedFilter = false;
+
     itemsArray.forEach(item => {
         item.style.display = "flex";
     })
 }
 
 function DisplayActive() {
+    activeFilter = true;
+    completedFilter = false;
+
     itemsArray.forEach(item => {
         let checkBox = item.querySelector(".checkbox");
         if (checkBox.checked) {
@@ -125,9 +144,13 @@ function DisplayActive() {
             item.style.display = "flex";
         }
     })
+    DisplayActive();
 }
 
 function DisplayCompleted() {
+    activeFilter = false;
+    completedFilter = true;
+
     itemsArray.forEach(item => {
         let checkBox = item.querySelector(".checkbox");
         if (checkBox.checked) {
